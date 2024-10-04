@@ -24,15 +24,35 @@
 
         <!-- Page Heading -->
         <header class="bg-white shadow">
-            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                {{ $header }}
+            <div class="py-6 px-4 sm:px-6 lg:px-8">
+
             </div>
         </header>
 
         <!-- Page Content -->
         <main>
-            {{ $slot }}
+
+            <div class="py-12">
+                <div class="sm:px-6 lg:px-8">
+                    <div class="bg-white p-4 overflow-hidden shadow-sm sm:rounded-lg">
+                        <div class="flex w-full">
+                            <div class="w-1/4">
+                                @include('layouts.admin-sidenav')
+                            </div>
+
+                            <div class="w-3/4">
+                                @yield('content')
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
         </main>
+
+        <footer class="bg-white py-6 px-4 sm:px-6 lg:px-8">
+            <p class="text-center">&copy; 2024 | ShinyEcom - All rights reserved.</p>
+        </footer>
     </div>
 </body>
 
