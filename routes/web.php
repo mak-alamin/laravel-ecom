@@ -24,8 +24,14 @@ Route::get('/dashboard', function () {
 
 
 
+
+Route::get('/dashboard/users/create', [UserController::class, 'create'])->middleware(['auth'])->name('create_user');
+
+Route::post('/dashboard/users/create', [UserController::class, 'store'])->middleware(['auth'])->name('store_user');
+
 Route::get('/dashboard/users', [UserController::class, 'index'])->middleware(['auth'])->name('users');
 
+Route::get('/dashboard/users/{id}', [UserController::class, 'show'])->middleware(['auth'])->name('user');
 
 
 Route::get('/dashboard/products', function () {
