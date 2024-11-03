@@ -24,18 +24,23 @@ Route::get('/dashboard', function () {
 
 
 
-
+// Users Routes
 Route::get('/dashboard/users/create', [UserController::class, 'create'])->middleware(['auth'])->name('create_user');
 
 Route::post('/dashboard/users/create', [UserController::class, 'store'])->middleware(['auth'])->name('store_user');
 
 Route::get('/dashboard/users', [UserController::class, 'index'])->middleware(['auth'])->name('users');
 
-Route::get('/dashboard/users/{id}', [UserController::class, 'show'])->middleware(['auth'])->name('user');
+Route::get('/dashboard/user/edit/{id}', [UserController::class, 'show'])->middleware(['auth'])->name('edit_user');
+
+Route::get('/dashboard/user/delete/{id}', [UserController::class, 'destroy'])->middleware(['auth'])->name('delete_user');
 
 
+
+// Products Routes
 Route::get('/dashboard/products', function () {
     return view('admin.products');
 })->middleware(['auth'])->name('products');
+
 
 require __DIR__.'/auth.php';

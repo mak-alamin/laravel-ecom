@@ -4,9 +4,9 @@
 
 @section('content')
 
-@if (session('create-success'))
+@if (session('success-message'))
 <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-5" role="alert">
-    <span class="block sm:inline">{{ session('create-success') }}</span>
+    <span class="block sm:inline">{{ session('success-message') }}</span>
     <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
         <svg class="fill-current h-6 w-6 text-green-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
             <title>Close</title>
@@ -39,9 +39,11 @@
                 </td>
 
                 <td class="border-b p-4 text-right">
-                    <a href="{{ route('user', [$user->id]) }}">Edit</a>
+                    <a href="{{ route('edit_user', [$user->id]) }}" class="text-blue-400 mr-3">Edit</a>
 
-                    <a href="{{ route('user', [$user->id]) }}">Delete</a>
+                    @if( auth()->user()->id != $user->id)
+                    <a href="{{ route('delete_user', [$user->id]) }}" class="text-red-400">Delete</a>
+                    @endif
                 </td>
             </tr>
             @endforeach

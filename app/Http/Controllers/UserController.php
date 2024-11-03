@@ -11,13 +11,13 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('admin.users', ['users' => $users]);
+        return view('admin/users/list', ['users' => $users]);
     }
 
     public function show($id)
     {
         $user = User::find($id);
-        return view('admin.userProfile', ['user' => $user]);
+        return view('admin/users/profile', ['user' => $user]);
     }
 
     public function create()
@@ -34,14 +34,22 @@ class UserController extends Controller
             'password' => 'required|min:6',
         ]);
 
-                // Create a new user and save it in the database
+        // Create a new user and save it in the database
         User::create([
             'name' => $validatedData['name'],
             'email' => $validatedData['email'],
-            'password' => Hash::make($validatedData['password']), // Encrypt the password
+            'password' => Hash::make($validatedData['password']),
         ]);
 
         // Redirect the user to a success page or back to the form
-        return redirect()->route('users')->with('create-success', 'User created successfully!');
+        return redirect()->route('users')->with('success-message', 'User created successfully!');
+    }
+
+    public function destroy($id) {
+        $deleted = User::destroy($id);
+
+        if($deleted){
+            return redirect()->route('users')->with('success-message', 'User deleted successfully!');
+        }
     }
 }
