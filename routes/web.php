@@ -42,5 +42,9 @@ Route::get('/dashboard/products', function () {
     return view('admin.products');
 })->middleware(['auth'])->name('products');
 
+Route::get('/dashboard/orders', function () {
+    return view('admin.orders');
+})->middleware(['auth'])->name('orders');
+
 
 require __DIR__.'/auth.php';

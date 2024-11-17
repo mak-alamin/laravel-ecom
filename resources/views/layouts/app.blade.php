@@ -22,16 +22,9 @@
     <div class="min-h-screen bg-gray-100">
         @include('layouts.navigation')
 
-        <!-- Page Heading -->
-        <header class="bg-white shadow">
-            <div class="text-center py-6 px-4 sm:px-6 lg:px-8">
-                @yield('title')
-            </div>
-        </header>
-
         <!-- Page Content -->
         <main>
-            <div class="py-12">
+            <div class="py-4">
                 <div class="sm:px-6 lg:px-8">
                     <div class="bg-white p-4 overflow-hidden shadow-sm sm:rounded-lg">
                         <div class="flex w-full">
@@ -40,6 +33,9 @@
                             </div>
 
                             <div class="w-3/4">
+                            <div class="py-3">
+                                @yield('title')
+                            </div>
                                 @yield('content')
                             </div>
                         </div>
