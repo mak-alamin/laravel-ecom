@@ -13,9 +13,6 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 
 <body class="font-sans antialiased">
@@ -33,9 +30,9 @@
                             </div>
 
                             <div class="w-3/4">
-                            <div class="py-3">
-                                @yield('title')
-                            </div>
+                                <div class="py-3">
+                                    @yield('title')
+                                </div>
                                 @yield('content')
                             </div>
                         </div>
@@ -49,6 +46,38 @@
             <p class="text-center">&copy; 2024 | ShinyEcom - All rights reserved.</p>
         </footer>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
+    <script>
+        var deleteButtons = document.querySelectorAll("a.delete-btn");
+
+        if (deleteButtons.length) {
+            deleteButtons.forEach(function(button, i) {
+                button.addEventListener("click", function(e) {
+                    e.preventDefault();
+
+                    Swal.fire({
+                        title: 'Are you sure?',
+                        text: "You won't be able to revert this!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonText: 'Yes, delete it!',
+                        confirmButtonColor: '#d33',
+                        cancelButtonText: 'No, Keep it.',
+                        cancelButtonColor: '#3085d6',
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = e.target.href;
+                        }
+                    });
+                });
+            });
+        }
+    </script>
 </body>
 
 </html>

@@ -1,5 +1,5 @@
 {
-    "name": "laravel/laravel",
+    "name": "laravel/ecommerce",
     "type": "project",
     "description": "Laravel Ecommerce Website.",
     "keywords": ["ecommerce", "laravel"],

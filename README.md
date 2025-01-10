@@ -1,3 +1,3 @@
 # laravel-ecom
 
-E-Commerce Site using Laravel
+An E-Commerce Web App created with Laravel
