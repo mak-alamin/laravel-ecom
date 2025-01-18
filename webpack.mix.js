@@ -12,11 +12,29 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
+.react() // Enable React support
 .postCss('resources/css/app.css', 'public/css', [
     require('postcss-import'),
     require('tailwindcss'),
     require('autoprefixer'),
-]);
+])
+.browserSync({
+    proxy: 'localhost:8000', // The Laravel development server URL
+    files: [
+        'resources/views/**/*.blade.php', // Watch Blade templates
+        'resources/js/**/*.js',          // Watch JS files
+        'resources/css/**/*.css',        // Watch CSS files
+        'app/**/*.php',                  // Watch PHP files
+        'routes/**/*.php',               // Watch Routes
+    ],
+});
+
+mix.options({
+    watchOptions: {
+        usePolling: true,
+        interval: 1000, // Check for changes every second
+    },
+});
 
 mix.webpackConfig({
     stats: {
